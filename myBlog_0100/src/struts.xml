@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="myBlog" extends="struts-default">
+		<action name="IndexAction"
+			class="IndexAction">
+			<result>/front/FrontIndex.jsp</result>
+		</action>
+		<action name="LogonAction"
+			class="LogonAction">
+			<result>/admin/AdminIndex.jsp</result>
+		</action>
+		<action name="ArticleAction"
+			class="ArticleAction">
+			<result>/admin/article/ArticleSingle.jsp</result>
+		</action>
+	</package>
+</struts>
+
+

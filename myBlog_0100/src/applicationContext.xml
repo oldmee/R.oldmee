@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+						http://www.springframework.org/schema/tx 
+        				http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+
+	<!-- scope="prototype" 会在该类型的对象被请求时创建一个新的action对象 -->
+	<bean id="IndexAction" class="com.yxq.action.IndexAction"
+		scope="prototype">
+	</bean>
+	<bean id="LogonAction" class="com.yxq.action.LogXAction"
+		scope="prototype">
+	</bean>
+	<bean id="ArticleAction" class="com.yxq.action.ArticleAction"
+		scope="prototype">
+	</bean>
+	
+		
+	
+	
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+	
+	<bean id="LogonDao" class="com.yxq.dao.LogonDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="ReviewDao" class="com.yxq.dao.ReviewDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="AuthorReviewDao" class="com.yxq.dao.AuthorReviewDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="ArticleTypeDao" class="com.yxq.dao.ArticleTypeDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="ArticleDao" class="com.yxq.dao.ArticleDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="MasterDao" class="com.yxq.dao.MasterDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="true" />
+	 
+</beans>
