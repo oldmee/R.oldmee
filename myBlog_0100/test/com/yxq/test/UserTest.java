@@ -18,7 +18,7 @@ public class UserTest extends HibernateDaoSupport {
 				"applicationContext.xml");
 
 		LogonDao dao = (LogonDao) ctx.getBean("LogonDao");
-		
+		System.out.println("自己的代码总能同步了吧");
 		MasterBean mb = new MasterBean();
 		mb.setMaster_name("admin");
 		mb.setMaster_password("admin");
